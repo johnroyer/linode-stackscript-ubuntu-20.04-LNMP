@@ -21,6 +21,7 @@ apt-get update
 # default config
 wget https://raw.githubusercontent.com/johnroyer/linode-stackscript-ubuntu-20.04-LNMP/master/config/nginx-default -O /root/nginx-default
 wget https://raw.githubusercontent.com/johnroyer/linode-stackscript-ubuntu-20.04-LNMP/github-hosted/config/www.conf -O /root/www.conf
+wget https://raw.githubusercontent.com/johnroyer/linode-stackscript-ubuntu-20.04-LNMP/github-hosted/index.php -O /root/index.php
 cd /root
 
 
@@ -36,5 +37,6 @@ apt-get install -y \
     php8.0-mysql php8.0-readline php8.0-redis php8.0-sqlite3 \
     php8.0-xml php8.0-xsl php8.0-zip 
 cp /root/www.conf /etc/php/8.0/fpm/pool.d/
+cp /root/index.php /var/www/html/
 systemctl restart php8.0-fpm.service
 
