@@ -41,3 +41,12 @@ cp /root/www.conf /etc/php/8.0/fpm/pool.d/
 cp /root/index.php /var/www/html/
 systemctl restart php8.0-fpm.service
 
+# MySQL
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.20-1_all.deb -O /root/mysql.deb
+export DEBIAN_FRONTEND=noninteractive
+dpkg -i /root/mysql.deb
+apt-get update
+apt-get install -y mysql-server-8.0 mysql-client-8.0
+usermod -d /var/lib/mysql/ mysql
+mysqld --initialize --user=mysql
+systemctl start mysql.service
