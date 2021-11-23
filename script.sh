@@ -20,8 +20,8 @@ apt-get update
 
 # default config
 wget https://raw.githubusercontent.com/johnroyer/linode-stackscript-ubuntu-20.04-LNMP/master/config/nginx-default -O /root/nginx-default
-wget https://raw.githubusercontent.com/johnroyer/linode-stackscript-ubuntu-20.04-LNMP/github-hosted/config/www.conf -O /root/www.conf
-wget https://raw.githubusercontent.com/johnroyer/linode-stackscript-ubuntu-20.04-LNMP/github-hosted/index.php -O /root/index.php
+wget https://raw.githubusercontent.com/johnroyer/linode-stackscript-ubuntu-20.04-LNMP/master/config/www.conf -O /root/www.conf
+wget https://raw.githubusercontent.com/johnroyer/linode-stackscript-ubuntu-20.04-LNMP/master/index.php -O /root/index.php
 cd /root
 
 
