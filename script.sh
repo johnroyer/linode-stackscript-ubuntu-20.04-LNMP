@@ -26,6 +26,7 @@ cd /root
 
 
 # Nginx
+apt-get install -y nginx-full
 cp /root/nginx-default /etc/nginx/sites-available/default
 systemctl restart nginx.service
 
