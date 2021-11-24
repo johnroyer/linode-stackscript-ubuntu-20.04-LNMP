@@ -41,3 +41,20 @@ cp /root/www.conf /etc/php/8.0/fpm/pool.d/
 cp /root/index.php /var/www/html/
 systemctl restart php8.0-fpm.service
 
+# MySQL
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.20-1_all.deb -O /root/mysql.deb
+export DEBIAN_FRONTEND=noninteractive
+debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/repo-codename select trusty'
+debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/repo-distro select ubuntu'
+debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/repo-url string http://repo.mysql.com/apt/'
+debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/select-preview select '
+debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/select-product select Ok'
+debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/select-server select mysql-8.0'
+debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/select-tools select '
+debconf-set-selections <<< 'mysql-apt-config mysql-apt-config/unsupported-platform select abort'
+dpkg -i /root/mysql.deb
+apt-get update
+apt-get install -y mysql-server-8.0 mysql-client-8.0
+usermod -d /var/lib/mysql/ mysql
+mysqld --initialize --user=mysql
+systemctl start mysql.service
